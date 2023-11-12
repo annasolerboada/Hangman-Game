@@ -1,0 +1,203 @@
+/*********************************************
+                    GENERAL
+**********************************************/ 
+*{
+  box-sizing: border-box; 
+}
+
+body {
+  background-color: #b0baff;
+  color: #fff;
+  font-family: "Verdana", sans-serif;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  height: auto;
+  margin: 0;
+  overflow: hidden;
+  padding: 2rem;
+}
+
+h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1.5;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  text-align: center;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+#currentPlayer {
+  display: none;
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  margin-top: 0rem;
+  margin-bottom: 3rem;
+  color: black;
+  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+  letter-spacing: 1px;
+}
+
+/*********************************************
+                    GAME CONTAINER
+**********************************************/ 
+.game-container {
+  display: none;
+  background-color: white;
+  padding: 20px 30px;
+  position: relative;
+  margin: auto;
+  width: 500px;
+  color: black;
+  border: 15px solid white;
+}
+
+.figure-container {
+  background-color: white !important; 
+  fill: transparent;
+  stroke: rgb(119, 115, 115);
+  stroke-width: 3px;
+  stroke-linecap: round;
+}
+
+.figure-part {
+  display: none;
+}
+
+.hiddenWord {
+  background-color: white;
+  color: black;
+  display: flex;
+  position: absolute;
+  bottom: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.letter {
+  background-color: white;
+  border-bottom: 3px solid black;
+  display: inline-flex;
+  font-size: 30px;
+  align-items: center;
+  justify-content: center;
+  margin: 0 3px;
+  height: 50px;
+  width: 20px;
+}
+
+/*********************************************
+               WRONG CONTAINER
+**********************************************/ 
+.wrong-letters-container {
+  display: flex;
+  justify-content: left;
+  margin-top: 0rem;
+  margin-bottom: 2rem;
+  color: rgb(47, 0, 128);
+}
+
+.wrong-letters-container p {
+  margin: 0 0 5px;
+}
+
+.wrong-letters-container span {
+  font-size: 22px;
+}
+
+
+/*********************************************
+               SCORE CONTAINER
+**********************************************/ 
+.score-container {
+  background-color: #7983c3;
+  display: flex;
+  justify-content: center;
+  border-radius: 5px;
+  padding: 0.5rem;
+  margin-top: 2rem;
+  width: 200px;
+}
+
+.score-container h2 {
+  color: white; 
+}
+
+#scoreContainer {
+  display: none;
+}
+
+
+/*********************************************
+               POPUP CONTAINER
+**********************************************/ 
+
+.popup-container {
+  background-color: rgba(0, 0, 0, 0.3);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  /* display: flex; */
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.popup {
+  background: rgb(234, 144, 66);
+  border-radius: 5px;
+  box-shadow: 0 15px 10px 3px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+}
+
+.popup button {
+  cursor: pointer;
+  background-color: #fff;
+  color: black;
+  margin-top: 20px;
+  padding: 12px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+.popup button:active {
+  transform: scale(0.98);
+}
+
+.popup button:focus {
+  outline: 0;
+}
+
+/*********************************************
+               NOTIFICATION CONTAINER
+**********************************************/ 
+
+.notification-container {
+  background-color: rgba(255, 255, 255, 0.814);
+  border-radius: 10px 10px 0 0;
+  padding: 15px 20px;
+  position: absolute;
+  bottom: -50px;
+  transition: transform 0.3s ease-in-out;
+  color: black;
+}
+
+.notification-container p {
+  margin: 0;
+}
+
+.notification-container.show {
+  transform: translateY(-50px);
+}
+
+
+
+
+

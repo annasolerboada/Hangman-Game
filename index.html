@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+  <head>
+    <link rel="stylesheet" href="style.css" />
+    <title>Hangman | Anna and Teia</title>
+  </head>
+  <body>
+    <h1>Hangman</h1>
+    <h2 id="currentPlayer">No player yet</h2> <!-- We don't show it at the start -->
+
+    <!---------------- NAME INPUT SECTION ------------------->
+    <div id="nameInputSection">
+      <p>Enter your name to start:</p>
+      <input type="text" id="playerNameInput">
+      <button id="startButton">START</button>
+    </div>
+
+    <!----------------- GAME CONTAINER ---------------------->
+      <div class="game-container" id="gameContainer">
+          <p>Enter a letter to find the hidden word</p>
+
+          <svg height="250" width="200" class="figure-container">
+            <!-- Rod -->
+            <line x1="60" y1="20" x2="140" y2="20" />
+            <line x1="140" y1="20" x2="140" y2="50" />
+            <line x1="60" y1="20" x2="60" y2="230" />
+            <line x1="20" y1="230" x2="100" y2="230" />
+
+            <!-- Head -->
+            <circle cx="140" cy="70" r="20" class="figure-part" />
+            <!-- Body -->
+            <line x1="140" y1="90" x2="140" y2="150" class="figure-part" />
+            <!-- Arms -->
+            <line x1="140" y1="120" x2="120" y2="100" class="figure-part" />
+            <line x1="140" y1="120" x2="160" y2="100" class="figure-part" />
+            <!-- Legs -->
+            <line x1="140" y1="150" x2="120" y2="180" class="figure-part" />
+            <line x1="140" y1="150" x2="160" y2="180" class="figure-part" />
+          </svg>
+
+          <div class="hiddenWord" id="hiddenWord"></div>
+
+          <div class="wrong-letters-container">
+            <div id="wrong-letters"></div>
+          </div>
+      </div>
+      
+
+      <!----------------- SCORE CONTAINER ---------------------->
+      <div class="score-container" id="scoreContainer">
+        <p id="winPointsDisplay">Correct words: 0</p>
+        <p id="lostPointsDisplay">Incorrect words: 0</p>
+      </div>
+     
+
+    <!----------------- FINAL MESSAGE CONTAINER ---------------------->
+    <div class="popup-container" id="popup-container">
+      <div class="popup">
+        <h2 id="final-message"></h2>
+        <h3 id="final-message-reveal-word"></h3>
+        <button id="play-button">Play Again</button>
+      </div>
+    </div>
+
+    <!----------------- NOTIFICATION CONTAINER ---------------------->
+    <div class="notification-container" id="notification-container">
+      <p id="notification-message"></p>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
