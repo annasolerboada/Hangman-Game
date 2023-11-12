@@ -34,4 +34,8 @@ The Hangman game provides an interactive and visually appealing platform for pla
   
 - **script.js:** JavaScript file containing the game logic and functionality.
 
+### Development Insights
+
+During the development process, we drew inspiration from existing Hangman games to understand and address challenges. For example, the implementation of letter revealing was a crucial aspect that required careful consideration.
+
 
