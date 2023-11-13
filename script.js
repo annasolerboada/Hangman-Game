@@ -7,6 +7,7 @@ const notification = document.getElementById('notification-container'); // Notif
 const finalMessage = document.getElementById('final-message'); // Message displayed at the end of the game
 const finalMessageRevealWord = document.getElementById('final-message-reveal-word'); // Message revealing the word at the end
 const figureParts = document.querySelectorAll('.figure-part'); // Elements of the hangman figure
+var changePlayerButton = document.getElementById('changePlayerButton');
 
 // Array containing possibleWord for the game
 const possibleWord = ['application', 'programming', 'interface', 'software', 'hardware', 'code', 'algorithm', 'data', 'function', 'variable', 'method', 'condition', 'compilation', 'debugging', 'framework', 'testing', 'abstraction', 'hexadecimal', 'security']
@@ -18,8 +19,8 @@ let selectedWord = possibleWord[Math.floor(Math.random() * possibleWord.length)]
 let readLetters = false;
 
 // Points
-let winPoints = 0;
-let lostPoints = 0;
+var winPoints = 0;
+var lostPoints = 0;
 
 // Arrays to store correct and wrong letters
 const correctLetters = [];
@@ -76,13 +77,15 @@ function updateWrongLettersEl() {
 
 // Show a notification when a letter is repeated
 function showNotification(message) {
+    const notification = document.getElementById('notification-container');
     const notificationMessage = document.getElementById('notification-message');
+    
+    notification.style.display = 'block';
     notificationMessage.textContent = message;
-    notification.classList.add('show');
 
     setTimeout(() => {
-        notification.classList.remove('show');
-    }, 2000);
+        notification.style.display = 'none';
+    }, 1000);
 }
 
 // EVENT LISTENERS ***********************************************************
@@ -138,33 +141,49 @@ buttonPlayAgain.addEventListener('click', () => {
 	popup.style.display = 'none';
 });
 
-// GAME INITIALIZATION *******************************************************
+// Event listener to change player
+changePlayerButton.addEventListener('click', function() {
+	// Make the game non-playable
+	readLetters = false;
+  
+	// Hide game elements
+	gameContainer.style.display = 'none';
+	scoreContainer.style.display = 'none';
+	changePlayerButton.style.display = 'none';
+  	currentPlayer.style.display = 'none';
+  
+	// Show the input name
+	nameInputSection.style.display = 'block';
+  
+	// Reset the player name input and the points
+	document.getElementById('playerNameInput').value = '';
+	winPoints = 0;
+	lostPoints = 0;
+  });
 
-// Start the game
-function startGame() {
+// Event listener to start the game
+startButton.addEventListener('click', function() {
 	var playerName = document.getElementById('playerNameInput').value;
-	const inputName = document.getElementById('nameInputSection');
 	
 	if (playerName.trim() !== '') {
 		readLetters = true;
 	
-		inputName.style.display = 'none'; // Hide the player name input field
 		nameInputSection.style.display = 'none'; // Hide the start button
 
+		// Display the game elements
 		gameContainer.style.display = 'block';
 		scoreContainer.style.display = 'block';
+ 		changePlayerButton.style.display = 'block';
+		updateScore();
 
 		var currentPlayerElement = document.getElementById('currentPlayer');
 		currentPlayerElement.innerText = 'Current Player: ' + playerName;
-		currentPlayerElement.style.display = 'block';
+		currentPlayer.style.display = 'block';
 		
 		showWord(); // Initially display the hidden word
 
 	} else {
 		showNotification('Please enter a valid name.'); // Show a notification for invalid input
 	}
-}
+});
 
-// Event listener for the start button
-startButton.addEventListener('click', startGame);
-notification.classList.remove('show');
